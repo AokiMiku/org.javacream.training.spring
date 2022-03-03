@@ -5,25 +5,39 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.apache.commons.lang3.SerializationUtils;
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
 import org.javacream.books.warehouse.api.Book;
 import org.javacream.books.warehouse.api.BookException;
 import org.javacream.books.warehouse.api.BooksService;
 import org.javacream.store.api.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 
-
+@Repository
 public class MapBooksService implements BooksService {
 
-	private IsbnGenerator isbnGenerator;
+	@Autowired private IsbnGenerator isbnGenerator;
 	private Map<String, Book> books;
-	private StoreService storeService;
+	@Autowired private StoreService storeService;
 	
 	{
 		books = new HashMap<String, Book>();
+		System.out.println("###################################### constructing " + this);
 	}
 
+	@PostConstruct public void initMbs() {
+		System.out.println("###################################### postconstructing " + this);
+		
+	}
+	@PreDestroy public void destroyMbs() {
+		System.out.println("###################################### predestroying " + this);
+		
+	}
 	
 	public void setStoreService(StoreService storeService) {
 		this.storeService = storeService;

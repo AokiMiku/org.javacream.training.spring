@@ -3,10 +3,16 @@ package org.javacream.books.isbngenerator.impl;
 import java.util.Random;
 
 import org.javacream.books.isbngenerator.api.IsbnGenerator;
+import org.javacream.books.isbngenerator.api.IsbnGenerator.RandomStrategy;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service("Hugo") //-> das Objekt heißt "Hugo"
+@Service //-> das Object heißt: Klassenname mit erstem Buchstaben klein, also randomIsbnGenerator  
+//@Scope("singleton")
+//@Scope("prototype")
+//@Qualifier("random")
+@RandomStrategy
 public class RandomIsbnGenerator implements IsbnGenerator {
 
 	@Value("${isbngenerator.prefix}")  String prefix;

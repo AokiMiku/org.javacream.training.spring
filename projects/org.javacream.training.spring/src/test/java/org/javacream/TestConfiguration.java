@@ -16,13 +16,14 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("prod")
-public class ApplicationConfiguration {
+@Profile("test")
+public class TestConfiguration {
 
 	@Bean
 	@Qualifier("booksMap")
 	public Map<String, Book> booksMap() {
 		HashMap<String, Book> data = new HashMap<>();
+		// TODO: add test data
 		return data;
 	}
 
@@ -30,6 +31,7 @@ public class ApplicationConfiguration {
 	@Qualifier("ordersMap")
 	public Map<Long, Order> ordersMap() {
 		HashMap<Long, Order> data = new HashMap<>();
+		// TODO: add test data
 		return data;
 	}
 
